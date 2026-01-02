@@ -1,0 +1,32 @@
+@keyframes appear {
+   0% {
+      opacity: 0;
+      transform: translateX(-500px);
+   }
+   100% {
+      opacity: 1;
+      transform: translateX(0px);
+   }
+}
+
+.pop-up {
+   position: fixed;
+   z-index: 3;
+   bottom: 15px;
+   right: auto;
+   left: auto;
+   background-color: var(--color-lightgreen);
+   width: 300px;
+   height: fit-content;
+   display: flex;
+   justify-content: space-between;
+   padding: 10px 15px;
+   border-radius: 8px;
+   color: #0c2315;
+   animation: appear 0.5s;
+}
+
+#close-button {
+   cursor: pointer;
+   height: fit-content;
+}

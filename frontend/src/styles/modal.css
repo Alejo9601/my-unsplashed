@@ -1,0 +1,99 @@
+.modal {
+   position: fixed;
+   top: 0px;
+   left: 0px;
+   right: 0px;
+   bottom: 0px;
+   margin: auto;
+   display: flex;
+   flex-direction: column;
+   align-content: center;
+   z-index: 1;
+   width: 350px;
+   height: fit-content;
+   background: #ffffff;
+   border-radius: 12px;
+   padding: 0px 20px;
+
+   @media (max-width: 768px) {
+      width: 300px;
+   }
+}
+
+.modal h3 {
+   font-weight: 500;
+   font-size: 20px;
+   width: 100%;
+   margin-top: 20px;
+}
+
+.modal__form {
+   display: flex;
+   width: 100%;
+   justify-content: center;
+   align-items: center;
+}
+
+.modal__form label {
+   display: flex;
+   width: 100%;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   margin: 20px 0px 0px 0px;
+   font-size: 14px;
+
+   @media (max-width: 768px) {
+      font-size: 10px;
+   }
+}
+
+.modal__form input[type="text"],
+.modal__form input[type="password"] {
+   width: 85%;
+   margin-top: 10px;
+   padding: 0px 20px;
+   height: 40px;
+   border: 1px solid #4f4f4f;
+   filter: drop-shadow(0px 1px 6px rgba(0, 0, 0, 0.1));
+   border-radius: 12px;
+   color: var(--color-grey);
+   outline: none;
+   font-size: 14px;
+}
+
+.modal__form-buttons {
+   width: 100%;
+   display: flex;
+   justify-content: flex-end;
+   margin: 20px 0px;
+   column-gap: 10px;
+}
+
+.modal__form-buttons input[type="button"] {
+   height: 40px;
+   width: 90px;
+   font-size: 14px;
+   cursor: pointer;
+}
+
+.modal__form-buttons #cancel-btn {
+   border: 1px solid #4f4f4f;
+   border-radius: 12px;
+   background-color: transparent;
+   color: #4f4f4f;
+}
+
+.modal__form-buttons #delete-btn {
+   background-color: var(--color-red);
+   border: 0px;
+   border-radius: 12px;
+   color: white;
+}
+
+.modal__form-buttons #submit-btn {
+   background-color: var(--color-green);
+   border: 0px;
+   border-radius: 12px;
+   color: white;
+}

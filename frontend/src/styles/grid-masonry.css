@@ -1,0 +1,32 @@
+.grid-masonry {
+   width: 70%;
+   columns: 3 300px;
+   gap: 15px;
+   padding: 50px 0px;
+}
+
+.grid-masonry__item-container {
+   position: relative;
+   margin-bottom: 12px;
+}
+
+.grid-masonry__item-container img {
+   width: 100%;
+   border-radius: 12px;
+   background-color: var(--color-lightgray);
+   transition: all ease 0.2s;
+}
+
+.grid-masonry__image-title {
+   position: absolute;
+   bottom: 25px;
+   left: 15px;
+   z-index: 1;
+}
+
+.grid-masonry__image-title h3 {
+   color: white;
+   font-family: "Montserrat";
+   font-size: 16px;
+   font-weight: 700px;
+}

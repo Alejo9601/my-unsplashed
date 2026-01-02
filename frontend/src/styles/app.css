@@ -1,0 +1,31 @@
+* {
+   margin: 0px;
+   padding: 0px;
+   font-family: "Noto Sans", sans-serif;
+}
+
+html {
+   scrollbar-gutter: stable;
+}
+
+.noscroll {
+   position: fixed;
+   overflow-y: scroll;
+}
+
+:root {
+   --color-green: #3db46d;
+   --color-lightgreen: #c7ecd6;
+   --color-lightgray: #bdbdbd;
+   --color-grey: #2e2e2e;
+   --color-red: #eb5757;
+}
+
+.App {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   align-content: flex-start;
+   background-color: hsl(0, 0%, 100%);
+   min-height: 120vh;
+}
