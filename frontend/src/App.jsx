@@ -2,8 +2,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ImagesProvider } from "./context/ImagesContext";
 import { UserProvider } from "./context/UserContext";
 import { StatusContextProvider } from "./context/FileStatusContext";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
+import Home from "./pages/Home/index.jsx";
+import Login from "./pages/Login/index.jsx";
 import "./styles/app.css";
 
 function App() {

@@ -16,12 +16,10 @@ const Home = () => {
    const { uploadedImg, resetFileStatusContext } =
       useContext(FileStatusContext);
 
-   useEffect(() => {
-      if (uploadedImg != null) {
-         setShowUploadModal(false);
-         setShowPopUp(true);
-      }
-   }, [uploadedImg]);
+   if (uploadedImg && showUploadModal) {
+      setShowUploadModal(false);
+      setShowPopUp(true);
+   }
 
    useEffect(() => {
       if (!showUploadModal && uploadedImg != null) {

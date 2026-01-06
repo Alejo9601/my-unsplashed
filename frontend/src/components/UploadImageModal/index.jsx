@@ -3,7 +3,7 @@ import { useContext, useEffect } from "react";
 import Upload from "../upload";
 import Uploading from "../uploading";
 import { OpacityContainer } from "../../styles/styled/div";
-import { Button as CancelButton } from "../../components/Generics/Button";
+import { Button as CancelButton } from "../Generics/Button";
 import preventAppScroll from "../../helpers/preventAppScroll";
 
 function UploadImageModal({ setShow }) {
