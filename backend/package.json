@@ -1,22 +1,27 @@
 {
-  "name": "my-unsplashed-backend",
-  "version": "1.0.0",
-  "description": "backend for My Unsplashed challenge from DevChallenges.io",
-  "main": "index.js",
-  "scripts": {
-    "dev": "nodemon src/index.js",
-    "start": "node src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Alejandro Juarez",
-  "license": "ISC",
-  "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^16.0.1",
-    "express": "^4.18.1",
-    "mongoose": "^6.5.3"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.19"
-  }
+   "name": "my-unsplashed-backend",
+   "version": "1.0.0",
+   "description": "backend for My Unsplashed challenge from DevChallenges.io",
+   "main": "index.js",
+   "scripts": {
+      "dev": "nodemon src/index.js",
+      "start": "node src/index.js",
+      "test": "echo \"Error: no test specified\" && exit 1"
+   },
+   "author": "Alejandro Juarez",
+   "license": "ISC",
+   "dependencies": {
+      "@supabase/supabase-js": "^2.89.0",
+      "bcrypt": "^6.0.0",
+      "cookie-parser": "^1.4.7",
+      "cors": "^2.8.5",
+      "dotenv": "^16.0.1",
+      "express": "^4.18.1",
+      "jsonwebtoken": "^9.0.3",
+      "multer": "^2.0.2",
+      "uploadthing": "^7.7.4"
+   },
+   "devDependencies": {
+      "nodemon": "^3.1.11"
+   }
 }
