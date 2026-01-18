@@ -9,12 +9,12 @@ import { isImageFile } from "../../helpers/isImageFile";
 
 const Upload = ({ show = true }) => {
    const { setUploading, tagName } = useContext(FileStatusContext);
-   const { uploadImage } = useImages();
+   const { uploadImg } = useImages();
 
    const handleSelectedFile = (selectedImg) => {
       if (isImageFile(selectedImg) && tagName != null) {
          setUploading(true);
-         uploadImage(tagName, selectedImg);
+         uploadImg(tagName, selectedImg);
       } else {
          alert("Files should be PNG, JPG... JPEG");
       }

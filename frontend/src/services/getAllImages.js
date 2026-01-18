@@ -1,7 +1,14 @@
-const getAllImages = () => {
-   return fetch("https://web-production-fbb1.up.railway.app/api/v1").then(
-      (res) => res.json()
-   );
+const getAllImages = async () => {
+   const options = {
+      method: "GET",
+      credentials: "include",
+   };
+
+   const endpoint = "http://localhost:3001/api/v1/images";
+
+   const data = await fetch(endpoint, options);
+
+   return data.json();
 };
 
 export default getAllImages;

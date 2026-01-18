@@ -1,10 +1,9 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { ImagesProvider } from "./context/ImagesContext";
 import { UserProvider } from "./context/UserContext";
 import { StatusContextProvider } from "./context/FileStatusContext";
-import Home from "./pages/Home/index.jsx";
-import Login from "./pages/Login/index.jsx";
 import "./styles/app.css";
+import AppRoutes from "./AppRoutes";
 
 function App() {
    return (
@@ -13,11 +12,7 @@ function App() {
             <UserProvider>
                <ImagesProvider>
                   <div className="App">
-                     <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/home" element={<Home />} />
-                        <Route path="/login" element={<Login />} />
-                     </Routes>
+                     <AppRoutes />
                   </div>
                </ImagesProvider>
             </UserProvider>

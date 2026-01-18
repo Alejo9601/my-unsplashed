@@ -10,7 +10,7 @@ const imagesRoutes = express.Router();
 imagesRoutes
    .get("/", async (req, res, next) => {
       try {
-         const images = await getImages(req.user_id);
+         const images = await getImages(req.user.user_id);
          res.status(200).send(images);
       } catch (error) {
          next(error);
@@ -26,7 +26,7 @@ imagesRoutes
             type: req.file.mimetype,
          });
 
-         const response = await uploadImage(file, req.user_id);
+         const response = await uploadImage(file, req.user.user_id);
 
          if (response.error) {
             return res.status(500).json({ error: response.error.message });

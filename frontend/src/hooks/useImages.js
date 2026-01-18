@@ -1,8 +1,7 @@
 import { useContext } from "react";
 import ImagesContext from "../context/ImagesContext";
-import deleteOneImg from "../services/deleteOneImg";
-import storeImgInfo from "../services/storeImgInfo";
-import storeImgBin from "../services/storeImgBin";
+import deleteImage from "../services/deleteImage";
+import uploadImage from "../services/uploadImage";
 import FileStatusContext from "../context/FileStatusContext";
 
 const useImages = () => {
@@ -10,18 +9,16 @@ const useImages = () => {
       useContext(ImagesContext);
    const { setUploadedImg } = useContext(FileStatusContext);
 
-   const uploadImage = async (tagName, imgBin) => {
-      return storeImgBin(imgBin).then((res) => {
-         storeImgInfo({ name: tagName, url: res.url }).then(() =>
-            setUploadedImg(res)
-         );
+   const uploadImg = async (tagName, imgBin) => {
+      return uploadImage(imgBin).then((res) => {
+         setUploadedImg(res);
       });
    };
 
    const deleteImg = (imgId) => {
-      return deleteOneImg(imgId).then(
+      return deleteImage(imgId).then(
          setImages((prevImages) =>
-            prevImages.filter((image) => image._id !== imgId)
+            prevImages.filter((image) => image.id !== imgId)
          )
       );
    };
@@ -37,7 +34,7 @@ const useImages = () => {
    return {
       images,
       imagesBySearch,
-      uploadImage,
+      uploadImg,
       deleteImg,
       searchByName,
    };

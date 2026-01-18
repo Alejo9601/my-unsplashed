@@ -4,6 +4,7 @@ const userRoutes = express.Router();
 
 userRoutes.post("/", (req, res, next) => {
    const user = req.body;
+
    createUser(user.username, user.password).then((result) =>
       res.send(result).end()
    );

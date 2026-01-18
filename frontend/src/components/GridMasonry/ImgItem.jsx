@@ -10,7 +10,7 @@ const ImgItem = ({ image = {}, onDeleteBtnClick }) => {
 
    const handleDeleteBtn = () => {
       onDeleteBtnClick();
-      setImgId(image._id);
+      setImgId(image.id);
    };
 
    const handleMouseEnter = () => {

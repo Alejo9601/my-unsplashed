@@ -13,6 +13,7 @@ async function uploadImage(file, userId) {
       .from("images")
       .insert({
          user_id: userId,
+         file_key: image_uploaded.data.key,
          name: image_uploaded.data.name,
          url: image_uploaded.data.url,
       })
