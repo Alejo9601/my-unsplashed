@@ -1,3 +1,4 @@
+import useUser from "../../hooks/useUser";
 import ImgItem from "./ImgItem";
 
 const ImgList = ({ imgsArray, onDeleteBtnClick }) => {

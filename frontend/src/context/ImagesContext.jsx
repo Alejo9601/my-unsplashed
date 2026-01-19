@@ -9,15 +9,19 @@ const ImagesProvider = ({ children }) => {
    const [images, setImages] = useState([]);
    const [imagesBySearch, setImagesBySearch] = useState([]);
    const { uploadedImg } = useContext(FileStatusContext);
-   const { loading } = useUser();
+   const { user, loading } = useUser();
 
    useEffect(() => {
-      if (!loading) {
-         getAllImages().then((res) => {
-            setImages(res);
-         });
+      if (loading) return;
+      if (!user) {
+         setImages([]);
+         return;
       }
-   }, [uploadedImg, loading]);
+
+      getAllImages()
+         .then(setImages)
+         .catch(() => setImages([]));
+   }, [user, loading, uploadedImg]);
 
    return (
       <ImagesContext.Provider
