@@ -2,24 +2,24 @@ import { useContext } from "react";
 import ImagesContext from "../context/ImagesContext";
 import deleteImage from "../services/deleteImage";
 import uploadImage from "../services/uploadImage";
-import FileStatusContext from "../context/FileStatusContext";
 
 const useImages = () => {
    const { images, setImages, imagesBySearch, setImagesBySearch } =
       useContext(ImagesContext);
-   const { setUploadedImg } = useContext(FileStatusContext);
 
-   const uploadImg = async (tagName, imgBin) => {
-      return uploadImage(imgBin).then((res) => {
-         setUploadedImg(res);
-      });
+   const uploadImg = async (imgBin) => {
+      const res = await uploadImage(imgBin);
+      if (!res) {
+         throw new Error("Upload returned empty response");
+      }
+      return res;
    };
 
-   const deleteImg = (imgId) => {
-      return deleteImage(imgId).then(
-         setImages((prevImages) =>
-            prevImages.filter((image) => image.id !== imgId)
-         )
+   const deleteImg = async (imgId) => {
+      await deleteImage(imgId);
+
+      setImages((prevImages) =>
+         prevImages.filter((image) => image.id !== imgId),
       );
    };
 
@@ -31,12 +31,17 @@ const useImages = () => {
       setImagesBySearch(images.filter((image) => image.name === nameToSearch));
    };
 
+   const refreshImages = (image) => {
+      setImages((prev) => [...prev, image]);
+   };
+
    return {
       images,
       imagesBySearch,
       uploadImg,
       deleteImg,
       searchByName,
+      refreshImages,
    };
 };
 

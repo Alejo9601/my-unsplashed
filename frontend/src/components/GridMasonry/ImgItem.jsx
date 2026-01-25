@@ -1,16 +1,13 @@
-import { useContext, useRef, useState } from "react";
-import ImageToDeleteContext from "../../context/ImageToDeleteContext";
+import { useRef, useState } from "react";
 import DeleteButton from "./DeleteButton";
 import ImageTitle from "./ImageTitle";
 
 const ImgItem = ({ image = {}, onDeleteBtnClick }) => {
    const imgRef = useRef();
    const [showOverlay, setShowOverlay] = useState(false);
-   const { setImgId } = useContext(ImageToDeleteContext);
 
    const handleDeleteBtn = () => {
-      onDeleteBtnClick();
-      setImgId(image.id);
+      onDeleteBtnClick(image);
    };
 
    const handleMouseEnter = () => {

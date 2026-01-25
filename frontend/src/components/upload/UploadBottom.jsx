@@ -1,12 +1,10 @@
-import { useContext, useRef } from "react";
+import { useRef } from "react";
 import { hidable_P as P } from "../../styles/styled/p";
 import InputButton from "./InputButton";
 import "../../styles/modal.css";
-import FileStatusContext from "../../context/FileStatusContext";
 import { FlexColumnDiv } from "../../styles/styled/div";
 
 const UploadBottom = ({ handleSelectedFile }) => {
-   const { setTagName } = useContext(FileStatusContext);
    const imageLabelRef = useRef();
 
    const handleOnChange = () => {

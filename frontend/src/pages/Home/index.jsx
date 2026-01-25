@@ -1,32 +1,15 @@
-import { useState, useEffect, useContext } from "react";
+import { useState } from "react";
 import ConfirmDeleteModal from "../../components/ConfirmDeleteModal";
 import GridMasonry from "../../components/GridMasonry";
 import Header from "../../components/Header";
 import UploadImageModal from "../../components/UploadImageModal";
 import PopUp from "../../components/PopUp";
-import { ImageToDeleteProvider as ImageToDelete } from "../../context/ImageToDeleteContext";
-import FileStatusContext from "../../context/FileStatusContext";
 import scrollBottom from "../../helpers/scrollBottom";
 
 const Home = () => {
-   const [showDeleteModal, setShowDeleteModal] = useState(false);
+   const [imageToDelete, setImageToDelete] = useState(null);
    const [showUploadModal, setShowUploadModal] = useState(false);
    const [showPopUp, setShowPopUp] = useState(false);
-
-   const { uploadedImg, resetFileStatusContext } =
-      useContext(FileStatusContext);
-
-   if (uploadedImg && showUploadModal) {
-      setShowUploadModal(false);
-      setShowPopUp(true);
-   }
-
-   useEffect(() => {
-      if (!showUploadModal && uploadedImg != null) {
-         scrollBottom();
-         resetFileStatusContext();
-      }
-   }, [showUploadModal]);
 
    return (
       <>
@@ -34,16 +17,18 @@ const Home = () => {
 
          {showUploadModal ? (
             <>
-               <UploadImageModal setShow={setShowUploadModal} />
+               <UploadImageModal onClose={() => setShowUploadModal(false)} />
             </>
          ) : null}
 
-         <ImageToDelete>
-            <GridMasonry onDeleteBtnClick={() => setShowDeleteModal(true)} />
-            {showDeleteModal ? (
-               <ConfirmDeleteModal showModal={setShowDeleteModal} />
-            ) : null}
-         </ImageToDelete>
+         <GridMasonry onDeleteBtnClick={setImageToDelete} />
+
+         {imageToDelete ? (
+            <ConfirmDeleteModal
+               image={imageToDelete}
+               onClose={() => setImageToDelete(null)}
+            />
+         ) : null}
 
          {showPopUp ? (
             <PopUp

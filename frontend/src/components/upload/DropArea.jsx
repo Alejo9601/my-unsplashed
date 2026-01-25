@@ -1,12 +1,10 @@
-import { useContext, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { DragArea, FlexColumnDiv } from "../../styles/styled/div";
 import { StyledInput } from "../../styles/styled/input";
 import { DragDescription as P } from "../../styles/styled/p";
 import BackgroundImage from "./BackgroundImage";
-import FileStatusContext from "../../context/FileStatusContext";
 
 const DragContainer = ({ handleSelectedFile }) => {
-   const { tagName } = useContext(FileStatusContext);
    const inputRef = useRef();
    const divRef = useRef();
 

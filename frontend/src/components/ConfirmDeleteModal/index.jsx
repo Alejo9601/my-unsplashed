@@ -1,15 +1,17 @@
-import { useContext } from "react";
-import ImageToDeleteContext from "../../context/ImageToDeleteContext";
 import useImages from "../../hooks/useImages";
 import Modal from "../Generics/Modal";
 import { OpacityContainer } from "../../styles/styled/div";
 
-const ConfirmDeleteModal = ({ showModal }) => {
-   const { imgId, setImgId } = useContext(ImageToDeleteContext);
+const ConfirmDeleteModal = ({ image, onClose }) => {
    const { deleteImg } = useImages();
 
-   const handleOnConfirmDelete = () => {
-      deleteImg(imgId).then(showModal(false));
+   const handleOnConfirmDelete = async () => {
+      try {
+         deleteImg(image.id);
+      } catch (error) {
+      } finally {
+         onClose();
+      }
    };
 
    return (
@@ -17,10 +19,7 @@ const ConfirmDeleteModal = ({ showModal }) => {
          <Modal
             btnActionText="Delete"
             handleAction={handleOnConfirmDelete}
-            handleCancel={() => {
-               showModal(false);
-               setImgId(null);
-            }}
+            handleCancel={onClose}
          ></Modal>
       </OpacityContainer>
    );
