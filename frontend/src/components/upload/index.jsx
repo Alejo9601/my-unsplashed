@@ -19,7 +19,7 @@ const Upload = ({ show = true, onSelectedImage }) => {
             <FlexCard>
                <UploadTop />
                <DropArea handleSelectedFile={handleSelectedFile} />
-               <UploadBottom handleSelectedFile={handleSelectedFile} />
+               {/* <UploadBottom handleSelectedFile={handleSelectedFile} /> */}
             </FlexCard>
          ) : null}
       </>

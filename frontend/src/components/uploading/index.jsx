@@ -1,4 +1,4 @@
-import ProgressBar from "./ProgressBar";
+import ProgressBar from "../Generics/ProgressBar";
 import { UploadingCard } from "../../styles/styled/div";
 import { UploadingStatusText } from "../../styles/styled/h1";
 

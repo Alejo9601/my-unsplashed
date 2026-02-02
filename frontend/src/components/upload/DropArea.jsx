@@ -9,11 +9,11 @@ const DragContainer = ({ handleSelectedFile }) => {
    const divRef = useRef();
 
    const handleOnChange = () => {
-      if (tagName == null) {
-         alert("Complete Tag name first");
-         inputRef.current.value = ""; //Cleaning current stored files
-         return;
-      }
+      // if (tagName == null) {
+      //    alert("Complete Tag name first");
+      //    inputRef.current.value = ""; //Cleaning current stored files
+      //    return;
+      // }
 
       handleSelectedFile(inputRef.current.files[0]);
    };

@@ -1,4 +1,4 @@
-import { MotionBar, StaticBar } from "../../styles/styled/div";
+import { MotionBar, StaticBar } from "../../../styles/styled/div";
 
 const ProgressBar = () => {
    return (
