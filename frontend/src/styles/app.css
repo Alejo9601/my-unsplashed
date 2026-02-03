@@ -27,5 +27,5 @@ html {
    justify-content: center;
    align-content: flex-start;
    background-color: hsl(0, 0%, 100%);
-   min-height: 120vh;
+   min-height: 100vh;
 }
