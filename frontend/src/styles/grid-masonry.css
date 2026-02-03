@@ -1,5 +1,6 @@
 .grid-masonry {
    width: 70%;
+   flex: 1;
    columns: 3 300px;
    gap: 15px;
    padding: 50px 0px;
