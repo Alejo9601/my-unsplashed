@@ -10,7 +10,7 @@ export async function userLogin(username, password) {
 
    const result = await fetch(endpoint, options);
 
-   if (!result) return null;
+   if (!result.ok) return null;
 
    return result.json();
 }

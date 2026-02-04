@@ -31,14 +31,15 @@ const Login = () => {
          const logged = await login(username, password);
 
          if (!logged) {
-            alert("Invalid Credentials");
-            return;
+            throw new Error("Invalid credentials");
          }
 
          setShowSpinner(false);
          navigate("/home");
-      } catch {
-         alert("Somenthing went wrong!");
+      } catch (error) {
+         console.log(error.message);
+      } finally {
+         setShowSpinner(false);
       }
    };
 
