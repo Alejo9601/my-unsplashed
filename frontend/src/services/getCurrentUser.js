@@ -1,5 +1,5 @@
 async function getCurrentUser() {
-   const endpoint = "http://localhost:3001/api/v1/auth/me";
+   const endpoint = `${import.meta.env.VITE_API_URL}/auth/me`;
    const options = {
       method: "GET",
       credentials: "include",

@@ -3,7 +3,9 @@ const deleteImage = (imgId) => {
       method: "DELETE",
       credentials: "include",
    };
-   const endpoint = "http://localhost:3001/api/v1/images/";
+
+   const endpoint = `${import.meta.env.VITE_API_URL}/images/`;
+
    return fetch(`${endpoint + imgId}`, options);
 };
 

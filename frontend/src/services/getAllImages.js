@@ -4,8 +4,8 @@ const getAllImages = async () => {
       credentials: "include",
    };
 
-   const endpoint = "http://localhost:3001/api/v1/images";
-
+   const endpoint = `${import.meta.env.VITE_API_URL}/images`;
+   
    const data = await fetch(endpoint, options);
 
    return data.json();
