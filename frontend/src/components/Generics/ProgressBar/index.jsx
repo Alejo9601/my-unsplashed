@@ -1,10 +1,13 @@
-import { MotionBar, StaticBar } from "../../../styles/styled/div";
+import AnimatedBar from "./animatedBar";
+import { UploadingCard } from "../../../styles/styled/div";
+import { UploadingStatusText } from "../../../styles/styled/h1";
 
-const ProgressBar = () => {
+const ProgressBar = ({ statusMessage }) => {
    return (
-      <StaticBar>
-         <MotionBar />
-      </StaticBar>
+      <UploadingCard>
+         <UploadingStatusText>{statusMessage}</UploadingStatusText>
+         <AnimatedBar />
+      </UploadingCard>
    );
 };
 

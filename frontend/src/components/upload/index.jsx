@@ -4,7 +4,7 @@ import UploadBottom from "./UploadBottom";
 import { FlexCard } from "../../styles/styled/div";
 import { isImageFile } from "../../helpers/isImageFile";
 
-const Upload = ({ show = true, onSelectedImage }) => {
+const Upload = ({ onSelectedImage }) => {
    const handleSelectedFile = (selectedImg) => {
       if (isImageFile(selectedImg)) {
          onSelectedImage(selectedImg);
@@ -14,15 +14,11 @@ const Upload = ({ show = true, onSelectedImage }) => {
    };
 
    return (
-      <>
-         {show ? (
-            <FlexCard>
-               <UploadTop />
-               <DropArea handleSelectedFile={handleSelectedFile} />
-               {/* <UploadBottom handleSelectedFile={handleSelectedFile} /> */}
-            </FlexCard>
-         ) : null}
-      </>
+      <FlexCard>
+         <UploadTop />
+         <DropArea handleSelectedFile={handleSelectedFile} />
+         {/* <UploadBottom handleSelectedFile={handleSelectedFile} /> */}
+      </FlexCard>
    );
 };
 

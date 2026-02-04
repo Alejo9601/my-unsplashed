@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Upload from "../upload";
-import Uploading from "../uploading";
+import ProgressBar from "../Generics/ProgressBar";
 import { OpacityContainer } from "../../styles/styled/div";
 import { Button as CancelButton } from "../Generics/Button";
 import preventAppScroll from "../../helpers/preventAppScroll";
@@ -41,11 +41,11 @@ function UploadImageModal({ onClose }) {
                   onClose();
                }}
             />
-            <Upload
-               show={uploading ? false : true}
-               onSelectedImage={handleUpload}
-            />
-            <Uploading show={uploading ? true : false} />
+            {uploading ? (
+               <ProgressBar statusMessage="Uploading ..." />
+            ) : (
+               <Upload onSelectedImage={handleUpload} />
+            )}
          </OpacityContainer>
       </>
    );
