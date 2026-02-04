@@ -4,10 +4,8 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
 const validateUser = async (username, password) => {
-   if (areEmptyFields(username, password)) {
-      return { error: "Fields should not be empty" };
-   }
-
+   const errorMessage = { ok: false, error: "Invalid Credentials" };
+   
    const { data: user, error } = await supabase
       .from("users")
       .select("*")
@@ -15,13 +13,13 @@ const validateUser = async (username, password) => {
       .single();
 
    if (error || !user) {
-      return { error: "Invalid credentials" };
+      return errorMessage;
    }
 
    const isValid = await bcrypt.compare(password, user.password);
 
    if (!isValid) {
-      return { error: "Invalid credentials" };
+      return errorMessage;
    }
 
    const token = jwt.sign(
@@ -29,10 +27,10 @@ const validateUser = async (username, password) => {
       process.env.JWT_SECRET,
       {
          expiresIn: "1h",
-      }
+      },
    );
 
-   return { token };
+   return { ok: true, token };
 };
 
 module.exports = { validateUser };
