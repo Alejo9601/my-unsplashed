@@ -11,21 +11,32 @@ auth
          const result = await validateUser(user.username, user.password);
 
          if (!result.ok) {
-            res.status(401).json({ error: "Invalid credentials" });
+            res.status(401).json({
+               success: false,
+               message: "Invalid credentials",
+            });
          }
 
          res.cookie("token", result.token, {
             httpOnly: true, // siempre
-            secure: false, // true solo en https
-            sameSite: "lax", // mejor que strict en dev
+            secure: true, // true solo en https
+            sameSite: "strict", // mejor que strict en dev
             maxAge: 3600000,
-         }).send(result);
+         }).send({ success: true, message: "Logged in", data: result });
       } catch (error) {
          next(error);
       }
    })
    .get("/me", authMiddleware, async (req, res, next) => {
       res.json(req.user);
+   })
+   .delete("/logout", authMiddleware, (req, res, next) => {
+      res.clearCookie("token", {
+         httpOnly: true,
+         secure: true,
+         sameSite: "strict",
+      });
+      res.status(200).json({ success: true, message: "Logged out" });
    });
 
 module.exports = auth;
