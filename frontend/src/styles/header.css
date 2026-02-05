@@ -44,16 +44,20 @@
    }
 }
 
-.header-auth-options {
-   position: absolute;
+.header-logout {
    right: 0px;
-   top: 32px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 
-.header-auth-options a {
-   text-decoration: none;
-   color: var(--color-green);
+.header-logout button {
+   background-color: white;
+   color: var(--color-red);
    font-weight: 600;
+   outline: none;
+   border: 0px;
+   cursor: pointer;
 }
 
 .header__upload-btn:hover {
@@ -69,6 +73,12 @@
    color: white;
    font-size: 16px;
    font-weight: 700;
+}
+
+.header_logout-upload-container {
+   display: flex;
+   justify-content: space-between;
+   gap: 20px;
 }
 
 .header__searchbar {

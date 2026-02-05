@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import UserContext from "../context/UserContext";
 import { userLogin } from "../services/userLogin";
+import userLogout from "../services/userLogout";
 
 const useUser = () => {
    const { user, setUser, loading } = useContext(UserContext);
@@ -14,7 +15,12 @@ const useUser = () => {
       return true;
    };
 
-   return { login, user, loading };
+   const logout = async () => {
+      await userLogout(user);
+      setUser(null);
+   };
+
+   return { login, user, loading, logout };
 };
 
 export default useUser;
