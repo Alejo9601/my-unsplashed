@@ -43,19 +43,23 @@ const Login = () => {
       }
    };
 
+   const handleOnRegisterClick = () => {
+      navigate("/register");
+   };
+
    return (
-      <div className="login-container">
+      <div className="auth-container">
          {showSpinner ? (
             <Loader></Loader>
          ) : (
-            <div className="login-card">
-               <div className="login-card__header">
+            <div className="auth-card">
+               <div className="auth-card__header">
                   <img src={logo} alt="unsplashed logo" />
                   <h1>Login</h1>
                   <span>Welcome</span>
                </div>
                <form
-                  className="login-card__form"
+                  className="auth-card__form"
                   onSubmit={(e) => handleLogin(e)}
                >
                   <label>
@@ -81,14 +85,20 @@ const Login = () => {
                      />
                   </label>
                   <input
-                     id="login-btn"
+                     id="auth-btn"
                      type="submit"
-                     name="loginbtn"
+                     name="authBtn"
                      value="Login"
                   />
                </form>
             </div>
          )}
+         <p>
+            Doesn´t have an account yet{" "}
+            <span id="go-to-registration" onClick={handleOnRegisterClick}>
+               register Now
+            </span>
+         </p>
       </div>
    );
 };

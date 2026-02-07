@@ -1,12 +1,13 @@
-.login-container {
+.auth-container {
    display: flex;
    justify-content: center;
    align-items: center;
    width: 100%;
    height: 100vh;
+   flex-direction: column;
 }
 
-.login-card {
+.auth-card {
    display: flex;
    flex-wrap: wrap;
    justify-content: center;
@@ -18,25 +19,25 @@
   border-radius: 12px; */
 }
 
-.login-card__header {
+.auth-card__header {
    display: flex;
    flex-direction: column;
    justify-content: center;
    align-items: center;
 }
 
-.login-card__header img {
+.auth-card__header img {
    width: 32px;
    height: 32px;
 }
 
-.login-card__header h1 {
+.auth-card__header h1 {
    font-weight: 800;
    margin-top: 15px;
    text-align: center;
 }
 
-.login-card__form {
+.auth-card__form {
    width: 90%;
    align-self: flex-end;
    margin: 0px 0px 30px 0px;
@@ -54,7 +55,7 @@
    margin-bottom: 25px;
 }
 
-#login-btn {
+#auth-btn {
    width: 100%;
    border: 0px;
    margin-top: 15px;
@@ -66,7 +67,13 @@
    cursor: pointer;
 }
 
-#login-btn:hover {
+#auth-btn:hover {
    background-color: #69b989;
    color: white;
+}
+
+#go-to-registration {
+   color: green;
+   text-decoration: underline;
+   cursor: pointer;
 }
