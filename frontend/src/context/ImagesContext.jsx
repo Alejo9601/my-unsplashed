@@ -11,14 +11,23 @@ const ImagesProvider = ({ children }) => {
 
    useEffect(() => {
       if (loading) return;
+
       if (!user) {
          setImages([]);
          return;
       }
 
-      getAllImages()
-         .then(setImages)
-         .catch(() => setImages([]));
+      const fetchImages = async () => {
+         try {
+            const images = await getAllImages();
+            setImages(images);
+         } catch (error) {
+            console.error("❌ Error al obtener imágenes:", error);
+            setImages([]);
+         }
+      };
+
+      fetchImages();
    }, [user, loading]);
 
    return (
