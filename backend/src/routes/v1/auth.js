@@ -1,6 +1,7 @@
 const express = require("express");
 const { validateUser } = require("../../services/validateUser");
 const authMiddleware = require("../../middlewares/auth");
+const { createUser } = require("../../services/createUser");
 const auth = express.Router();
 
 auth
@@ -23,6 +24,33 @@ auth
             sameSite: "strict", // mejor que strict en dev
             maxAge: 3600000,
          }).send({ success: true, message: "Logged in", data: result });
+      } catch (error) {
+         next(error);
+      }
+   })
+   .post("/register", async (req, res, next) => {
+      const { username, password } = req.body;
+
+      try {
+         const result = await createUser(username, password);
+
+         if (!result.success) {
+            throw new Error({
+               success: false,
+               message: "User couldn´t be created",
+            });
+         }
+
+         res.cookie("token", result.token, {
+            httpOnly: true, // siempre
+            secure: true, // true solo en https
+            sameSite: "strict", // mejor que strict en dev
+            maxAge: 3600000,
+         });
+
+         console.log(res);
+
+         res.send({ success: true, message: "Logged in", data: result });
       } catch (error) {
          next(error);
       }

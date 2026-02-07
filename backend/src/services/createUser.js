@@ -1,5 +1,6 @@
 const { supabase } = require("../database/supabase");
 const { areEmptyFields } = require("../utils/areEmptyFields");
+const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
 const createUser = async (username, password) => {
@@ -9,7 +10,7 @@ const createUser = async (username, password) => {
 
    const hashedPassword = await bcrypt.hash(password, 10);
 
-   const { data, error } = await supabase
+   const { data: user, error } = await supabase
       .from("users")
       .insert({ username: username, password: hashedPassword })
       .select()
@@ -19,7 +20,15 @@ const createUser = async (username, password) => {
       return { error: error.message };
    }
 
-   return data;
+   const token = jwt.sign(
+      { user_id: user.id, username: user.username },
+      process.env.JWT_SECRET,
+      {
+         expiresIn: "1h",
+      },
+   );
+
+   return { success: true, token };
 };
 
 module.exports = { createUser };
