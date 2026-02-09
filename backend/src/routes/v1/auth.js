@@ -19,11 +19,15 @@ auth
          }
 
          res.cookie("token", result.token, {
-            httpOnly: true, // siempre
-            secure: true, // true solo en https
-            sameSite: "strict", // mejor que strict en dev
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
             maxAge: 3600000,
-         }).send({ success: true, message: "Logged in", data: result });
+         }).json({
+            success: true,
+            message: "Logged in",
+            data: result,
+         });
       } catch (error) {
          next(error);
       }
