@@ -1,12 +1,6 @@
-import { useEffect } from "react";
-import useUser from "../../hooks/useUser";
 import ImgItem from "./ImgItem";
 
 const ImgList = ({ imgsArray, onDeleteBtnClick }) => {
-   useEffect(() => {
-      console.log(imgsArray);
-   }, [imgsArray]);
-
    return (
       <>
          {(imgsArray || []).map((image) => {
