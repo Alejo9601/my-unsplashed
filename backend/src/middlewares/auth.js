@@ -1,8 +1,14 @@
 const jwt = require("jsonwebtoken");
 
 const authMiddleware = (req, res, next) => {
+   res.setHeader(
+      "Cache-Control",
+      "private, no-store, no-cache, must-revalidate",
+   );
+   res.setHeader("Pragma", "no-cache");
+   res.setHeader("Expires", "0");
+
    try {
-      //const token = req.headers.authorization?.split(" ")[1]; // Bearer TOKEN
       const token = req.cookies.token;
 
       if (!token) {
