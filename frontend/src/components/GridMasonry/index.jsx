@@ -7,8 +7,6 @@ import { useEffect } from "react";
 const GridMasonry = ({ onDeleteBtnClick }) => {
    const { images, imagesBySearch } = useImages();
 
-   useEffect(() => {}, [images]);
-
    return (
       <div className="grid-masonry">
          {imagesBySearch.length === 0 ? (
