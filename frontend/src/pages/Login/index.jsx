@@ -11,22 +11,12 @@ const Login = () => {
 
    const [username, setUsername] = useState("");
    const [password, setPassword] = useState("");
-
    const [showSpinner, setShowSpinner] = useState(false);
 
-   const handleUsernameChange = (event) => {
-      const inputText = event.target.value;
-      setUsername(inputText);
-   };
-
-   const handlePasswordChange = (event) => {
-      const inputText = event.target.value;
-      setPassword(inputText);
-   };
-
-   const handleLogin = async (e) => {
-      e.preventDefault();
+   const handleLogin = async (event) => {
+      event.preventDefault();
       setShowSpinner(true);
+
       try {
          const logged = await login(username, password);
 
@@ -34,7 +24,6 @@ const Login = () => {
             throw new Error("Invalid credentials");
          }
 
-         setShowSpinner(false);
          navigate("/home");
       } catch (error) {
          console.log(error.message);
@@ -43,62 +32,60 @@ const Login = () => {
       }
    };
 
-   const handleOnRegisterClick = () => {
-      navigate("/register");
-   };
-
    return (
       <div className="auth-container">
          {showSpinner ? (
-            <Loader></Loader>
+            <Loader />
          ) : (
             <div className="auth-card">
                <div className="auth-card__header">
                   <img src={logo} alt="unsplashed logo" />
-                  <h1>Login</h1>
-                  <span>Welcome</span>
+                  <h1>Welcome back</h1>
+                  <span>Login to manage your photos</span>
                </div>
-               <form
-                  className="auth-card__form"
-                  onSubmit={(e) => handleLogin(e)}
-               >
-                  <label>
-                     User
+
+               <form className="auth-card__form" onSubmit={handleLogin}>
+                  <label className="auth-field">
+                     Username
                      <input
-                        id="username"
+                        className="auth-input"
                         type="text"
                         name="username"
-                        onChange={(e) => {
-                           handleUsernameChange(e);
-                        }}
+                        onChange={(event) => setUsername(event.target.value)}
+                        placeholder="Type your username"
                      />
                   </label>
-                  <label>
+
+                  <label className="auth-field">
                      Password
                      <input
-                        id="userpass"
+                        className="auth-input"
                         type="password"
                         name="userpass"
-                        onChange={(e) => {
-                           handlePasswordChange(e);
-                        }}
+                        onChange={(event) => setPassword(event.target.value)}
+                        placeholder="Type your password"
                      />
                   </label>
+
                   <input
-                     id="auth-btn"
+                     className="auth-btn"
                      type="submit"
                      name="authBtn"
                      value="Login"
                   />
                </form>
+
+               <p className="auth-card__footer">
+                  Do not have an account yet?{" "}
+                  <span
+                     className="auth-link"
+                     onClick={() => navigate("/register")}
+                  >
+                     Register now
+                  </span>
+               </p>
             </div>
          )}
-         <p>
-            Doesn´t have an account yet{" "}
-            <span id="go-to-registration" onClick={handleOnRegisterClick}>
-               register Now
-            </span>
-         </p>
       </div>
    );
 };

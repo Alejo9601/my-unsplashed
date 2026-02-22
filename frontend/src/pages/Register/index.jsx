@@ -39,37 +39,39 @@ const Register = () => {
             <div className="auth-card">
                <div className="auth-card__header">
                   <img src={logo} alt="unsplashed logo" />
-                  <h1>Register</h1>
-                  <span>Welcome</span>
+                  <h1>Create account</h1>
+                  <span>Start saving your photos in one place</span>
                </div>
                <form
                   className="auth-card__form"
                   onSubmit={(e) => handleRegister(e)}
                >
-                  <label>
-                     User
+                  <label className="auth-field">
+                     Username
                      <input
-                        id="username"
+                        className="auth-input"
                         type="text"
                         name="username"
+                        placeholder="Choose a username"
                         onChange={(e) => {
                            handleUsernameChange(e);
                         }}
                      />
                   </label>
-                  <label>
+                  <label className="auth-field">
                      Password
                      <input
-                        id="userpass"
+                        className="auth-input"
                         type="password"
                         name="userpass"
+                        placeholder="Choose a password"
                         onChange={(e) => {
                            handlePasswordChange(e);
                         }}
                      />
                   </label>
                   <input
-                     id="auth-btn"
+                     className="auth-btn"
                      type="submit"
                      name="authBtn"
                      value="Register now"
