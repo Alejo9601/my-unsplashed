@@ -14,6 +14,7 @@
    break-inside: avoid;
    background: linear-gradient(135deg, #f2f2f2 0%, #dfdfdf 100%);
    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+   cursor: pointer;
 }
 
 .grid-masonry__image {
