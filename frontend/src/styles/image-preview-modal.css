@@ -1,35 +1,57 @@
+.image-preview-backdrop {
+   animation: preview-backdrop-in 0.2s ease-out;
+}
+
+.image-preview-backdrop--closing {
+   animation: preview-backdrop-out 0.22s ease-in forwards;
+   pointer-events: none;
+}
+
 .image-preview-modal {
    position: relative;
    width: min(92vw, 980px);
    max-height: 88vh;
-   display: flex;
-   flex-direction: column;
-   gap: 10px;
+   display: block;
    border-radius: 14px;
-   padding: 14px 14px 10px;
-   background-color: #ffffff;
-   box-shadow: 0 20px 44px rgba(0, 0, 0, 0.38);
+   animation: preview-zoom-in 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+   transform-origin: center;
+}
+
+.image-preview-modal--closing {
+   animation: preview-zoom-out 0.22s ease-in forwards;
 }
 
 .image-preview-modal img {
    width: 100%;
-   max-height: calc(88vh - 72px);
+   max-height: 88vh;
    object-fit: contain;
-   border-radius: 10px;
-   background-color: #f2f2f2;
+   border-radius: 14px;
+   background-color: #101010;
+   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.45);
 }
 
 .image-preview-modal p {
+   position: absolute;
+   left: 12px;
+   bottom: 12px;
+   max-width: calc(100% - 24px);
+   padding: 6px 10px;
+   border-radius: 8px;
    font-family: "Montserrat";
    font-size: 14px;
    font-weight: 600;
-   color: #333333;
+   color: #ffffff;
+   background-color: rgba(0, 0, 0, 0.42);
+   backdrop-filter: blur(2px);
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
 }
 
 .image-preview-modal__close {
    position: absolute;
-   top: -12px;
-   right: -12px;
+   top: 10px;
+   right: 10px;
    height: 32px;
    width: 32px;
    border: none;
@@ -44,12 +66,12 @@
 @media (max-width: 768px) {
    .image-preview-modal {
       width: 94vw;
-      padding: 10px 10px 8px;
       border-radius: 12px;
    }
 
    .image-preview-modal img {
-      max-height: calc(84vh - 62px);
+      max-height: 84vh;
+      border-radius: 12px;
    }
 
    .image-preview-modal__close {
@@ -57,5 +79,45 @@
       right: 8px;
       height: 28px;
       width: 28px;
+   }
+}
+
+@keyframes preview-backdrop-in {
+   from {
+      opacity: 0;
+   }
+   to {
+      opacity: 1;
+   }
+}
+
+@keyframes preview-zoom-in {
+   from {
+      opacity: 0;
+      transform: scale(0.94);
+   }
+   to {
+      opacity: 1;
+      transform: scale(1);
+   }
+}
+
+@keyframes preview-backdrop-out {
+   from {
+      opacity: 1;
+   }
+   to {
+      opacity: 0;
+   }
+}
+
+@keyframes preview-zoom-out {
+   from {
+      opacity: 1;
+      transform: scale(1);
+   }
+   to {
+      opacity: 0;
+      transform: scale(0.95);
    }
 }
