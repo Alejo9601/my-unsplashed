@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Upload from "../upload";
 import ProgressBar from "../Generics/ProgressBar";
 import { OpacityContainer } from "../../styles/styled/div";
@@ -8,12 +8,25 @@ import "../../styles/upload-modal.css";
 
 function UploadImageModal({ onClose }) {
    const [uploading, setUploading] = useState(false);
+   const [isClosing, setIsClosing] = useState(false);
+   const closeTimeoutRef = useRef(null);
    const { uploadImg, refreshImages } = useImages();
+
+   const handleClose = () => {
+      if (isClosing) return;
+      setIsClosing(true);
+      closeTimeoutRef.current = setTimeout(() => {
+         onClose();
+      }, 220);
+   };
 
    useEffect(() => {
       preventAppScroll(true);
       return () => {
          preventAppScroll(false);
+         if (closeTimeoutRef.current) {
+            clearTimeout(closeTimeoutRef.current);
+         }
       };
    }, []);
 
@@ -28,20 +41,27 @@ function UploadImageModal({ onClose }) {
       } catch (error) {
       } finally {
          setUploading(false);
-         onClose();
+         handleClose();
       }
    };
 
    return (
-      <OpacityContainer className="upload-modal-backdrop" onClick={onClose}>
+      <OpacityContainer
+         className={`upload-modal-backdrop ${
+            isClosing ? "upload-modal-backdrop--closing" : ""
+         }`}
+         onClick={handleClose}
+      >
          <div
-            className="upload-modal-shell"
+            className={`upload-modal-shell ${
+               isClosing ? "upload-modal-shell--closing" : ""
+            }`}
             onClick={(event) => event.stopPropagation()}
          >
             <button
                type="button"
                className="upload-modal-close"
-               onClick={onClose}
+               onClick={handleClose}
                aria-label="Close upload modal"
             >
                x
