@@ -19,6 +19,7 @@ html {
    --color-lightgray: #bdbdbd;
    --color-grey: #2e2e2e;
    --color-red: #eb5757;
+   --layout-width: min(1120px, 92%);
 }
 
 .App {

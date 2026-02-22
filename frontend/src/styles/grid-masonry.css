@@ -1,5 +1,5 @@
 .grid-masonry {
-   width: min(1120px, 92%);
+   width: var(--layout-width);
    flex: 1;
    columns: 3 260px;
    gap: 20px;
@@ -96,7 +96,6 @@
 
 @media (max-width: 940px) {
    .grid-masonry {
-      width: min(960px, 94%);
       columns: 2 220px;
       gap: 16px;
       padding: 28px 0 44px;
@@ -105,7 +104,6 @@
 
 @media (max-width: 620px) {
    .grid-masonry {
-      width: 92%;
       columns: 1 100%;
       gap: 14px;
       padding: 20px 0 36px;
