@@ -1,7 +1,5 @@
 import DropArea from "./DropArea";
 import UploadTop from "./UploadTop";
-import UploadBottom from "./UploadBottom";
-import { FlexCard } from "../../styles/styled/div";
 import { isImageFile } from "../../helpers/isImageFile";
 
 const Upload = ({ onSelectedImage }) => {
@@ -14,11 +12,10 @@ const Upload = ({ onSelectedImage }) => {
    };
 
    return (
-      <FlexCard>
+      <div className="upload-card">
          <UploadTop />
          <DropArea handleSelectedFile={handleSelectedFile} />
-         {/* <UploadBottom handleSelectedFile={handleSelectedFile} /> */}
-      </FlexCard>
+      </div>
    );
 };
 

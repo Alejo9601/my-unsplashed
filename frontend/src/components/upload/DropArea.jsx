@@ -1,40 +1,60 @@
-import { useEffect, useRef } from "react";
-import { DragArea, FlexColumnDiv } from "../../styles/styled/div";
-import { StyledInput } from "../../styles/styled/input";
-import { DragDescription as P } from "../../styles/styled/p";
+import { useRef, useState } from "react";
 import BackgroundImage from "./BackgroundImage";
 
 const DragContainer = ({ handleSelectedFile }) => {
    const inputRef = useRef();
-   const divRef = useRef();
+   const [dragging, setDragging] = useState(false);
 
-   const handleOnChange = () => {
-      // if (tagName == null) {
-      //    alert("Complete Tag name first");
-      //    inputRef.current.value = ""; //Cleaning current stored files
-      //    return;
-      // }
-
-      handleSelectedFile(inputRef.current.files[0]);
+   const handleOnChange = (event) => {
+      const file = event.target.files?.[0];
+      if (!file) return;
+      handleSelectedFile(file);
    };
 
-   useEffect(() => {
-      inputRef.current.addEventListener("dragenter", () => {
-         divRef.current.style.backgroundColor = "#EAF6F6";
-      });
-      inputRef.current.addEventListener("dragleave", () => {
-         divRef.current.style.backgroundColor = "#e1e5ea80";
-      });
-   }, []);
+   const handleDrop = (event) => {
+      event.preventDefault();
+      setDragging(false);
+
+      const file = event.dataTransfer.files?.[0];
+      if (!file) return;
+      handleSelectedFile(file);
+   };
+
+   const handleDragOver = (event) => {
+      event.preventDefault();
+      setDragging(true);
+   };
+
+   const handleDragLeave = () => {
+      setDragging(false);
+   };
 
    return (
-      <DragArea ref={divRef}>
-         <FlexColumnDiv>
+      <div
+         className={`upload-dropzone ${dragging ? "upload-dropzone--active" : ""}`}
+         onDrop={handleDrop}
+         onDragOver={handleDragOver}
+         onDragLeave={handleDragLeave}
+      >
+         <div className="upload-dropzone-content">
             <BackgroundImage />
-            <P>{`Drag & Drop your image here`}</P>
-         </FlexColumnDiv>
-         <StyledInput ref={inputRef} type="file" onChange={handleOnChange} />
-      </DragArea>
+            <p>Drag and drop your image here</p>
+            <button
+               type="button"
+               className="upload-select-btn"
+               onClick={() => inputRef.current?.click()}
+            >
+               Choose file
+            </button>
+         </div>
+         <input
+            ref={inputRef}
+            className="upload-hidden-input"
+            type="file"
+            accept="image/png,image/jpg,image/jpeg"
+            onChange={handleOnChange}
+         />
+      </div>
    );
 };
 
