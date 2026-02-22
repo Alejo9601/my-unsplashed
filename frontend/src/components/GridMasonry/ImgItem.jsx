@@ -1,38 +1,41 @@
-import { useRef, useState } from "react";
 import DeleteButton from "./DeleteButton";
 import ImageTitle from "./ImageTitle";
 
-const ImgItem = ({ image = {}, onDeleteBtnClick }) => {
-   const imgRef = useRef();
-   const [showOverlay, setShowOverlay] = useState(false);
-
+const ImgItem = ({ image = {}, onDeleteBtnClick, onPreviewClick }) => {
    const handleDeleteBtn = () => {
       onDeleteBtnClick(image);
    };
 
-   const handleMouseEnter = () => {
-      imgRef.current.style.filter = "brightness(50%)";
-      setShowOverlay(true);
-   };
-
-   const handleMouseLeave = () => {
-      imgRef.current.style.filter = "brightness(100%)";
-      setShowOverlay(false);
+   const handlePreviewClick = () => {
+      if (onPreviewClick) {
+         onPreviewClick(image);
+      }
    };
 
    return (
       <div
-         onMouseEnter={handleMouseEnter}
-         onMouseLeave={handleMouseLeave}
          className="grid-masonry__item-container"
+         onClick={handlePreviewClick}
+         role="button"
+         tabIndex={0}
+         onKeyDown={(event) => {
+            if (event.target !== event.currentTarget) return;
+            if (event.key === "Enter" || event.key === " ") {
+               event.preventDefault();
+               handlePreviewClick();
+            }
+         }}
       >
-         {showOverlay ? (
-            <>
-               <DeleteButton onClickAction={handleDeleteBtn} btnText="delete" />
-               <ImageTitle titleText={image.name} />
-            </>
-         ) : null}
-         <img ref={imgRef} src={image.url} alt={image.name} loading="lazy" />
+         <img
+            className="grid-masonry__image"
+            src={image.url}
+            alt={image.name || "Image"}
+            loading="lazy"
+         />
+         <div className="grid-masonry__overlay">
+            <DeleteButton onClickAction={handleDeleteBtn} btnText="delete" />
+            <ImageTitle titleText={image.name} />
+         </div>
       </div>
    );
 };

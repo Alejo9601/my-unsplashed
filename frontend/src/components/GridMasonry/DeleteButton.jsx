@@ -1,11 +1,17 @@
 const DeleteButton = ({ onClickAction, btnText }) => {
+   const handleClick = (event) => {
+      event.stopPropagation();
+      onClickAction();
+   };
+
    return (
-      <div
-         className="generic-button img-delete-button"
-         onClick={() => onClickAction()}
+      <button
+         type="button"
+         className="grid-masonry__delete-button"
+         onClick={handleClick}
       >
-         <p>{btnText}</p>
-      </div>
+         {btnText}
+      </button>
    );
 };
 

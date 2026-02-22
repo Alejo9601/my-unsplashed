@@ -1,6 +1,6 @@
 import ImgItem from "./ImgItem";
 
-const ImgList = ({ imgsArray, onDeleteBtnClick }) => {
+const ImgList = ({ imgsArray, onDeleteBtnClick, onPreviewClick }) => {
    return (
       <>
          {(imgsArray || []).map((image) => {
@@ -9,6 +9,7 @@ const ImgList = ({ imgsArray, onDeleteBtnClick }) => {
                   key={image.id}
                   image={image}
                   onDeleteBtnClick={onDeleteBtnClick}
+                  onPreviewClick={onPreviewClick}
                />
             );
          })}
