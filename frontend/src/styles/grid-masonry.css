@@ -6,6 +6,22 @@
    padding: 36px 0 56px;
 }
 
+.grid-masonry--loading {
+   min-height: 280px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   gap: 12px;
+   columns: unset;
+}
+
+.grid-masonry--loading p {
+   color: #6b6b6b;
+   font-size: 14px;
+   font-weight: 500;
+}
+
 .grid-masonry__item-container {
    position: relative;
    margin-bottom: 20px;

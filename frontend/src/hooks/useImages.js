@@ -4,7 +4,7 @@ import deleteImage from "../services/deleteImage";
 import uploadImage from "../services/uploadImage";
 
 const useImages = () => {
-   const { images, setImages, imagesBySearch, setImagesBySearch } =
+   const { images, setImages, imagesBySearch, setImagesBySearch, imagesLoading } =
       useContext(ImagesContext);
 
    const uploadImg = async (imgBin) => {
@@ -38,6 +38,7 @@ const useImages = () => {
    return {
       images,
       imagesBySearch,
+      imagesLoading,
       uploadImg,
       deleteImg,
       searchByName,

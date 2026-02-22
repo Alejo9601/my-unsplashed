@@ -7,6 +7,7 @@ const ImagesContext = createContext();
 const ImagesProvider = ({ children }) => {
    const [images, setImages] = useState([]);
    const [imagesBySearch, setImagesBySearch] = useState([]);
+   const [imagesLoading, setImagesLoading] = useState(true);
    const { user, loading } = useUser();
 
    useEffect(() => {
@@ -14,16 +15,21 @@ const ImagesProvider = ({ children }) => {
 
       if (!user) {
          setImages([]);
+         setImagesLoading(false);
          return;
       }
 
       const fetchImages = async () => {
+         setImagesLoading(true);
+
          try {
-            const images = await getAllImages();
-            setImages(images);
+            const responseImages = await getAllImages();
+            setImages(responseImages);
          } catch (error) {
-            console.error("❌ Error al obtener imágenes:", error);
+            console.error("Error getting images:", error);
             setImages([]);
+         } finally {
+            setImagesLoading(false);
          }
       };
 
@@ -32,7 +38,13 @@ const ImagesProvider = ({ children }) => {
 
    return (
       <ImagesContext.Provider
-         value={{ images, setImages, imagesBySearch, setImagesBySearch }}
+         value={{
+            images,
+            setImages,
+            imagesBySearch,
+            setImagesBySearch,
+            imagesLoading,
+         }}
       >
          {children}
       </ImagesContext.Provider>
