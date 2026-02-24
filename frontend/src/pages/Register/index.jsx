@@ -1,5 +1,5 @@
 import { useState } from "react";
-import logo from "../../assets/favicon.ico";
+import logo from "../../assets/camera.png";
 import useUser from "../../hooks/useUser";
 import Loader from "../../components/Generics/Loader";
 

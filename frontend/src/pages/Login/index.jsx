@@ -1,5 +1,5 @@
 import "../../styles/auth.css";
-import logo from "../../assets/favicon.ico";
+import logo from "../../assets/camera.png";
 import Loader from "../../components/Generics/Loader";
 import { useState } from "react";
 import useUser from "../../hooks/useUser";
