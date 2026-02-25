@@ -2,6 +2,7 @@ import { useState } from "react";
 import logo from "../../assets/camera.png";
 import useUser from "../../hooks/useUser";
 import Loader from "../../components/Generics/Loader";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
    const [showSpinner, setShowSpinner] = useState(false);
@@ -9,6 +10,8 @@ const Register = () => {
 
    const [username, setUsername] = useState("");
    const [password, setPassword] = useState("");
+
+   const navigate = useNavigate()
 
    const handleRegister = async (e) => {
       e.preventDefault();
@@ -77,6 +80,15 @@ const Register = () => {
                      value="Register now"
                   />
                </form>
+               <p className="auth-card__footer">
+                  Already have an account?{" "}
+                  <span
+                     className="auth-link"
+                     onClick={() => navigate("/login")}
+                  >
+                     Login here
+                  </span>
+               </p>
             </div>
          )}
       </div>
