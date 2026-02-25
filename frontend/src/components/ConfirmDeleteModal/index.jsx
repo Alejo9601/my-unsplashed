@@ -26,9 +26,10 @@ const ConfirmDeleteModal = ({ image, onClose }) => {
             <ProgressBar statusMessage="Deleting..."></ProgressBar>
          ) : (
             <Modal
-               btnActionText="Delete"
                handleAction={handleOnConfirmDelete}
+               action="Delete"
                handleCancel={onClose}
+               confirmButtonVariant="danger"
             ></Modal>
          )}
       </OpacityContainer>

@@ -1,30 +1,42 @@
 import "../../../styles/modal.css";
 
-const Modal = ({ children, handleCancel, action = "DELETE", handleAction }) => {
-  return (
-    <div className="modal">
-      <h3>{action === "DELETE" ? "Are you sure?" : "Add an image"}</h3>
-      <form className="modal__form">
-        {children}
-        <div className="modal__form-buttons">
-          <input
-            type="button"
-            onClick={handleCancel}
-            name="cancel"
-            value="Cancel"
-            id="cancel-btn"
-          />
-          <input
-            type="button"
-            name="action-btn"
-            value={action === "DELETE" ? "Delete" : "Submit"}
-            id={action === "DELETE" ? "delete-btn" : "submit-btn"}
-            onClick={handleAction}
-          />
-        </div>
-      </form>
-    </div>
-  );
+const Modal = ({
+   children,
+   handleCancel,
+   action,
+   handleAction,
+   confirmButtonVariant = "primary",
+}) => {
+   const variants = {
+      primary: "submit-btn",
+      secondary: "secondary-btn",
+      danger: "delete-btn",
+   };
+
+   return (
+      <div className="modal">
+         <h3>Are you sure?</h3>
+         <form className="modal__form">
+            {children}
+
+            <div className="modal__form-buttons">
+               <input
+                  type="button"
+                  onClick={handleCancel}
+                  value="Cancel"
+                  id="cancel-btn"
+               />
+
+               <input
+                  type="button"
+                  value={action}
+                  onClick={handleAction}
+                  id={variants[confirmButtonVariant]}
+               />
+            </div>
+         </form>
+      </div>
+   );
 };
 
 export default Modal;
