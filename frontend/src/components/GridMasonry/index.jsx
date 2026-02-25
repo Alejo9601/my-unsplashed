@@ -38,7 +38,7 @@ const GridMasonry = ({ onDeleteBtnClick, onPreviewClick }) => {
          ) : (
             <div className="no-images-loaded">
                <img src={noimages} />
-               <p>No images uploeaded yet</p>
+               <p>No images uploaded yet</p>
             </div>
          )}
       </>
