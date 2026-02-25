@@ -51,7 +51,7 @@ const DragContainer = ({ handleSelectedFile }) => {
             ref={inputRef}
             className="upload-hidden-input"
             type="file"
-            accept="image/png,image/jpg,image/jpeg"
+            accept="image/png,image/jpg,image/jpeg,image/webp"
             onChange={handleOnChange}
          />
       </div>
