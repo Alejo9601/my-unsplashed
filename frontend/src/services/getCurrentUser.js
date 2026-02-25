@@ -8,7 +8,7 @@ async function getCurrentUser() {
    const response = await fetch(endpoint, options);
 
    if (!response.ok) {
-      return null;
+      throw new Error("Error trying to restore session");
    }
 
    const data = await response.json();
