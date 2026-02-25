@@ -24,11 +24,15 @@ const useImages = () => {
    };
 
    const deleteImg = async (imgId) => {
-      await deleteImage(imgId);
-
-      setImages((prevImages) =>
-         prevImages.filter((image) => image.id !== imgId),
-      );
+      try {
+         await deleteImage(imgId);
+         setImages((prevImages) =>
+            prevImages.filter((image) => image.id !== imgId),
+         );
+      } catch (error) {
+         console.error("Error al borrar la imagen", error.message);
+         alert("Error al borrar la imagen", error.message);
+      }
    };
 
    const searchByName = (nameToSearch) => {
