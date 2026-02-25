@@ -14,7 +14,7 @@ const UserProvider = ({ children }) => {
             const currentUser = await getCurrentUser();
             setUser(currentUser ?? null);
          } catch (err) {
-            console.error("Error restoring session", err);
+            console.log("Error trying to restore session");
             setUser(null);
          } finally {
             setLoading(false);
