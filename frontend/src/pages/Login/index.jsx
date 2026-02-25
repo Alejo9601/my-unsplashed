@@ -12,6 +12,7 @@ const Login = () => {
    const [username, setUsername] = useState("");
    const [password, setPassword] = useState("");
    const [showSpinner, setShowSpinner] = useState(false);
+   const [loginError, setLoginError] = useState(false); // 👈 nuevo estado
 
    const handleLogin = async (event) => {
       event.preventDefault();
@@ -27,6 +28,7 @@ const Login = () => {
          navigate("/home");
       } catch (error) {
          console.log(error.message);
+         setLoginError(true);
       } finally {
          setShowSpinner(false);
       }
@@ -45,6 +47,12 @@ const Login = () => {
                </div>
 
                <form className="auth-card__form" onSubmit={handleLogin}>
+                  {/* 👇 Mensaje de error */}
+                  {loginError && (
+                     <div className="error-message">
+                        Invalid username or password
+                     </div>
+                  )}
                   <label className="auth-field">
                      Username
                      <input

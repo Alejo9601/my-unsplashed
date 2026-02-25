@@ -127,3 +127,18 @@
       font-size: 22px;
    }
 }
+
+
+.error-message {
+  color: #ff4d4f;
+  background-color: #ffeaea;
+  padding: 8px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.input-error {
+  border: 1px solid #ff4d4f;
+  background-color: #fff5f5;
+}
