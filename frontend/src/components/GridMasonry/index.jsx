@@ -3,6 +3,7 @@ import "../../styles/generics.css";
 import useImages from "../../hooks/useImages";
 import ImgList from "./ImgList";
 import Loader from "../Generics/Loader";
+import noimages from "./../../assets/no-images.png";
 
 const GridMasonry = ({ onDeleteBtnClick, onPreviewClick }) => {
    const { images, imagesBySearch, imagesLoading } = useImages();
@@ -17,21 +18,30 @@ const GridMasonry = ({ onDeleteBtnClick, onPreviewClick }) => {
    }
 
    return (
-      <div className="grid-masonry">
-         {imagesBySearch.length === 0 ? (
-            <ImgList
-               imgsArray={images}
-               onDeleteBtnClick={onDeleteBtnClick}
-               onPreviewClick={onPreviewClick}
-            />
+      <>
+         {images.length > 0 ? (
+            <div className="grid-masonry">
+               {imagesBySearch.length === 0 ? (
+                  <ImgList
+                     imgsArray={images}
+                     onDeleteBtnClick={onDeleteBtnClick}
+                     onPreviewClick={onPreviewClick}
+                  />
+               ) : (
+                  <ImgList
+                     imgsArray={imagesBySearch}
+                     onDeleteBtnClick={onDeleteBtnClick}
+                     onPreviewClick={onPreviewClick}
+                  />
+               )}
+            </div>
          ) : (
-            <ImgList
-               imgsArray={imagesBySearch}
-               onDeleteBtnClick={onDeleteBtnClick}
-               onPreviewClick={onPreviewClick}
-            />
+            <div className="no-images-loaded">
+               <img src={noimages} />
+               <p>No images uploeaded yet</p>
+            </div>
          )}
-      </div>
+      </>
    );
 };
 

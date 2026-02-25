@@ -146,3 +146,18 @@
       transform: none;
    }
 }
+
+.no-images-loaded {
+   /* background-color: lightblue; */
+   width: var(--layout-width);
+   min-height: 100dvh;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+}
+
+.no-images-loaded img {
+   height: 120px;
+   width: auto;
+}
