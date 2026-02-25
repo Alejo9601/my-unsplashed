@@ -9,7 +9,10 @@ async function uploadImage(img) {
    const endpoint = `${import.meta.env.VITE_API_URL}/images`;
    const res = await fetch(endpoint, options);
 
-   if (!res) throw new Error("No se pudo subir la imagen");
+   if (!res.ok) {
+      const errorData = await res.json().catch(() => ({}));
+      throw new Error(errorData.error || `Error del servidor: ${res.status}`);
+   }
 
    return res.json();
 }
