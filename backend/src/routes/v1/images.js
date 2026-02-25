@@ -45,7 +45,7 @@ imagesRoutes
       const image_id = req.params.id;
       try {
          await deleteImage(image_id);
-         res.status(204).json({ result: "Archivo eliminado correctamente" });
+         res.status(204).send();
       } catch (error) {
          next(error);
       }
