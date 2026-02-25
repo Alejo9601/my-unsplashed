@@ -1,18 +1,50 @@
-# React + Vite
+# My Unsplashed - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend de la app para subir, listar, buscar, previsualizar y eliminar imágenes.
 
-Currently, two official plugins are available:
+## Requisitos
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Requirements
 
-## React Compiler
+- Node.js 18+ (recomendado)
+- npm
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## Configuración
 
-Note: This will impact Vite dev & build performances.
+Crear un archivo `.env` en `frontend/` con:
 
-## Expanding the ESLint configuration
+```env
+VITE_API_URL=http://localhost:3000/api/v1
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Ajusta la URL según tu backend.
+
+## Scripts
+
+Desde `frontend/`:
+
+```bash
+npm install
+npm run dev
+```
+
+Otros scripts:
+
+```bash
+npm run build
+npm run preview
+npm run lint
+```
+
+## Estructura rápida
+
+- `src/pages`: pantallas principales (`Home`, `Login`, `Register`)
+- `src/components`: UI reutilizable (header, grid, modales, upload)
+- `src/context`: estado global de usuario e imágenes
+- `src/services`: llamadas HTTP al backend
+- `src/styles`: estilos globales y por feature
+
+## Notas
+
+- El proyecto usa React + Vite.
+- El despliegue del frontend está pensado para Vercel.
