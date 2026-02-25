@@ -4,15 +4,23 @@ import deleteImage from "../services/deleteImage";
 import uploadImage from "../services/uploadImage";
 
 const useImages = () => {
-   const { images, setImages, imagesBySearch, setImagesBySearch, imagesLoading } =
-      useContext(ImagesContext);
+   const {
+      images,
+      setImages,
+      imagesBySearch,
+      setImagesBySearch,
+      imagesLoading,
+   } = useContext(ImagesContext);
 
    const uploadImg = async (imgBin) => {
-      const res = await uploadImage(imgBin);
-      if (!res) {
-         throw new Error("Upload returned empty response");
+      try {
+         const data = await uploadImage(imgBin);
+         return data;
+      } catch (error) {
+         console.error("Error al subir la imagen", error.message);
+         // setErrorMessage(error.message);
+         alert("Error al subir la imagen", error.message);
       }
-      return res;
    };
 
    const deleteImg = async (imgId) => {
