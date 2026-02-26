@@ -7,6 +7,10 @@ export function OpacityContainer({ children, onCloseAction }) {
 
    useEffect(() => {
       preventAppScroll(true);
+
+      return () => {
+         preventAppScroll(false);
+      };
    }, []);
 
    const handleClose = () => {
