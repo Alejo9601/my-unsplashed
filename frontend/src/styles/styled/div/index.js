@@ -48,8 +48,10 @@ export const MotionBar = styled.div`
    }
 `;
 
-export const OpacityContainer = styled(FlexColumnDiv)`
-   position: fixed;
+export const OPCont = styled(FlexColumnDiv)`
+   position: absolute;
+   top: 0;
+   left: 0;
    z-index: 1;
    height: 100vh;
    width: 100vw;
