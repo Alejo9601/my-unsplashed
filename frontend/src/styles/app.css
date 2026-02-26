@@ -10,7 +10,7 @@ html {
 
 .noscroll {
    position: fixed;
-   overflow-y: scroll;
+   overflow: hidden;
 }
 
 :root {
