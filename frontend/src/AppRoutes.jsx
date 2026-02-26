@@ -4,12 +4,17 @@ import Login from "./pages/Login/index.jsx";
 import "./styles/app.css";
 import useUser from "./hooks/useUser.js";
 import Register from "./pages/Register/index.jsx";
+import Loader from "./components/Generics/Loader/index.jsx";
 
 function AppRoutes() {
    const { user, loading } = useUser();
 
    if (loading) {
-      return <h1> Cargando...</h1>;
+      return (
+         <div className="loading-home-container">
+            <Loader></Loader>
+         </div>
+      );
    }
 
    return (
