@@ -1,6 +1,5 @@
 import useImages from "../../hooks/useImages";
 import Modal from "../Generics/Modal";
-import { OpacityContainer } from "../../styles/styled/div";
 import { useState } from "react";
 import ProgressBar from "../Generics/ProgressBar";
 
@@ -21,7 +20,8 @@ const ConfirmDeleteModal = ({ image, onClose }) => {
    };
 
    return (
-      <OpacityContainer>
+      <>
+         {" "}
          {deleting ? (
             <ProgressBar statusMessage="Deleting..."></ProgressBar>
          ) : (
@@ -32,7 +32,7 @@ const ConfirmDeleteModal = ({ image, onClose }) => {
                confirmButtonVariant="danger"
             ></Modal>
          )}
-      </OpacityContainer>
+      </>
    );
 };
 

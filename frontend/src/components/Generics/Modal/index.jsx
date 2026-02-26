@@ -1,4 +1,5 @@
 import "../../../styles/modal.css";
+import OpacityContainer from "./../OpacityContainer";
 
 const Modal = ({
    children,
@@ -14,28 +15,31 @@ const Modal = ({
    };
 
    return (
-      <div className="modal">
-         <h3>Are you sure?</h3>
-         <form className="modal__form">
-            {children}
+      <OpacityContainer onCloseAction={handleCancel}>
+         {" "}
+         <div className="modal">
+            <h3>Are you sure?</h3>
+            <form className="modal__form">
+               {children}
 
-            <div className="modal__form-buttons">
-               <input
-                  type="button"
-                  onClick={handleCancel}
-                  value="Cancel"
-                  id="cancel-btn"
-               />
+               <div className="modal__form-buttons">
+                  <input
+                     type="button"
+                     onClick={handleCancel}
+                     value="Cancel"
+                     id="cancel-btn"
+                  />
 
-               <input
-                  type="button"
-                  value={action}
-                  onClick={handleAction}
-                  id={variants[confirmButtonVariant]}
-               />
-            </div>
-         </form>
-      </div>
+                  <input
+                     type="button"
+                     value={action}
+                     onClick={handleAction}
+                     id={variants[confirmButtonVariant]}
+                  />
+               </div>
+            </form>
+         </div>
+      </OpacityContainer>
    );
 };
 

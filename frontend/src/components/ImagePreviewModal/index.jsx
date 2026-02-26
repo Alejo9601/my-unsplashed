@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { OpacityContainer } from "../../styles/styled/div";
 import preventAppScroll from "../../helpers/preventAppScroll";
 import "../../styles/image-preview-modal.css";
+import OpacityContainer from "../Generics/OpacityContainer";
 
 const ImagePreviewModal = ({ image, onClose }) => {
    const [isClosing, setIsClosing] = useState(false);
@@ -39,12 +39,7 @@ const ImagePreviewModal = ({ image, onClose }) => {
    if (!image) return null;
 
    return (
-      <OpacityContainer
-         className={`image-preview-backdrop ${
-            isClosing ? "image-preview-backdrop--closing" : ""
-         }`}
-         onClick={handleClose}
-      >
+      <OpacityContainer onCloseAction={handleClose}>
          <div
             className={`image-preview-modal ${
                isClosing ? "image-preview-modal--closing" : ""

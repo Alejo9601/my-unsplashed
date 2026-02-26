@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import Upload from "../upload";
 import ProgressBar from "../Generics/ProgressBar";
-import { OpacityContainer } from "../../styles/styled/div";
 import preventAppScroll from "../../helpers/preventAppScroll";
 import useImages from "../../hooks/useImages";
 import "../../styles/upload-modal.css";
+import OpacityContainer from "../Generics/OpacityContainer";
 
 function UploadImageModal({ onClose }) {
    const [uploading, setUploading] = useState(false);
@@ -46,12 +46,7 @@ function UploadImageModal({ onClose }) {
    };
 
    return (
-      <OpacityContainer
-         className={`upload-modal-backdrop ${
-            isClosing ? "upload-modal-backdrop--closing" : ""
-         }`}
-         onClick={handleClose}
-      >
+      <OpacityContainer onCloseAction={handleClose}>
          <div
             className={`upload-modal-shell ${
                isClosing ? "upload-modal-shell--closing" : ""
