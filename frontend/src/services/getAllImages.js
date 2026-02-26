@@ -2,6 +2,7 @@ const getAllImages = async () => {
    const options = {
       method: "GET",
       credentials: "include",
+      cache: "no-store",
    };
 
    const endpoint = `${import.meta.env.VITE_API_URL}/images`;

@@ -2,6 +2,7 @@ async function getCurrentUser() {
    const endpoint = `${import.meta.env.VITE_API_URL}/auth/me`;
    const options = {
       method: "GET",
+      cache: "no-store",
       credentials: "include",
    };
 
