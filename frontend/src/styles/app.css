@@ -30,3 +30,11 @@ html {
    min-height: 100vh;
    flex-direction: column;
 }
+
+.loading-home-container {
+   width: 100dvh;
+   height: 100dvh;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
