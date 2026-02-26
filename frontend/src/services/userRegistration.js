@@ -4,6 +4,7 @@ export async function userRegistration(username, password) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username: username, password: password }),
+      cache: "no-store",
       credentials: "include",
    };
 
