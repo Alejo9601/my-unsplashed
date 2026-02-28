@@ -47,8 +47,8 @@ auth
 
          res.cookie("token", result.token, {
             httpOnly: true, // siempre
-            secure: true, // true solo en https
-            sameSite: "strict", // mejor que strict en dev
+            secure: process.env.NODE_ENV === "production",
+            sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
             maxAge: 3600000,
          });
 
@@ -65,8 +65,8 @@ auth
    .delete("/logout", authMiddleware, (req, res, next) => {
       res.clearCookie("token", {
          httpOnly: true,
-         secure: true,
-         sameSite: "strict",
+         secure: process.env.NODE_ENV === "production",
+         sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
       });
       res.status(200).json({ success: true, message: "Logged out" });
    });
