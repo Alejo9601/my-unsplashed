@@ -1,10 +1,9 @@
 const preventAppScroll = (bool) => {
-   let htmlEl = document.querySelector(".App");
    if (bool) {
-      htmlEl.classList.add("noscroll");
+      document.body.style.overflow = "hidden";
       return;
    }
-   htmlEl.classList.remove("noscroll");
+   document.body.style.overflow = "";
 };
 
 export default preventAppScroll;

@@ -8,11 +8,6 @@ html {
    scrollbar-gutter: stable;
 }
 
-.noscroll {
-   position: fixed;
-   overflow: hidden;
-}
-
 :root {
    --color-green: #3db46d;
    --color-lightgreen: #c7ecd6;
