@@ -3,6 +3,7 @@ const cors = require("cors");
 const v1Router = require("./routes/v1");
 const cookieParser = require("cookie-parser");
 const authMiddleware = require("./middlewares/auth");
+const errorHandler = require("./middlewares/errorHandler");
 require("dotenv").config();
 
 const app = express();
@@ -19,6 +20,7 @@ app.use(
 app.use("/api/v1/auth", v1Router.loginRoutes);
 app.use("/api/v1/user", v1Router.userRoutes);
 app.use("/api/v1/images", authMiddleware, v1Router.imagesRoutes);
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 3001;
 
