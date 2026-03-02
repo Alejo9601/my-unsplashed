@@ -6,7 +6,7 @@ const ImagesContext = createContext();
 
 const ImagesProvider = ({ children }) => {
    const [images, setImages] = useState([]);
-   const [imagesBySearch, setImagesBySearch] = useState([]);
+   const [imagesBySearch, setImagesBySearch] = useState(null);
    const [imagesLoading, setImagesLoading] = useState(true);
    const { user, loading } = useUser();
 

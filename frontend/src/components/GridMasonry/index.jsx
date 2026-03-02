@@ -7,6 +7,7 @@ import noimages from "./../../assets/no-images.png";
 
 const GridMasonry = ({ onDeleteBtnClick, onPreviewClick }) => {
    const { images, imagesBySearch, imagesLoading } = useImages();
+   const displayedImages = imagesBySearch === null ? images : imagesBySearch;
 
    if (imagesLoading) {
       return (
@@ -19,26 +20,22 @@ const GridMasonry = ({ onDeleteBtnClick, onPreviewClick }) => {
 
    return (
       <>
-         {images.length > 0 ? (
+         {displayedImages.length > 0 ? (
             <div className="grid-masonry">
-               {imagesBySearch.length === 0 ? (
-                  <ImgList
-                     imgsArray={images}
-                     onDeleteBtnClick={onDeleteBtnClick}
-                     onPreviewClick={onPreviewClick}
-                  />
-               ) : (
-                  <ImgList
-                     imgsArray={imagesBySearch}
-                     onDeleteBtnClick={onDeleteBtnClick}
-                     onPreviewClick={onPreviewClick}
-                  />
-               )}
+               <ImgList
+                  imgsArray={displayedImages}
+                  onDeleteBtnClick={onDeleteBtnClick}
+                  onPreviewClick={onPreviewClick}
+               />
             </div>
          ) : (
             <div className="no-images-loaded">
                <img src={noimages} />
-               <p>No images uploaded yet</p>
+               <p>
+                  {imagesBySearch === null
+                     ? "No images uploaded yet"
+                     : "No matches found"}
+               </p>
             </div>
          )}
       </>

@@ -36,11 +36,18 @@ const useImages = () => {
    };
 
    const searchByName = (nameToSearch) => {
-      if (nameToSearch === "") {
-         setImagesBySearch([]);
+      const normalizedQuery = nameToSearch.trim().toLowerCase();
+
+      if (normalizedQuery === "") {
+         setImagesBySearch(null);
          return;
       }
-      setImagesBySearch(images.filter((image) => image.name === nameToSearch));
+
+      setImagesBySearch(
+         images.filter((image) =>
+            image.name.toLowerCase().includes(normalizedQuery),
+         ),
+      );
    };
 
    const refreshImages = (image) => {
