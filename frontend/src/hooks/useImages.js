@@ -12,9 +12,9 @@ const useImages = () => {
       imagesLoading,
    } = useContext(ImagesContext);
 
-   const uploadImg = async (imgBin) => {
+   const uploadImg = async (imgBin, tagName) => {
       try {
-         const data = await uploadImage(imgBin);
+         const data = await uploadImage(imgBin, tagName);
          return data;
       } catch (error) {
          console.error("Error al subir la imagen", error.message);

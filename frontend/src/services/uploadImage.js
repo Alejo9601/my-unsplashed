@@ -1,6 +1,7 @@
-async function uploadImage(img) {
+async function uploadImage(img, tagName) {
    const formData = new FormData();
    formData.append("image", img);
+   formData.append("name", tagName);
    const options = {
       method: "POST",
       body: formData,

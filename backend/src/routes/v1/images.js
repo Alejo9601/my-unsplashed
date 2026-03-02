@@ -22,21 +22,23 @@ imagesRoutes
             return res.status(400).json({ error: "No image was received" });
          }
 
+         const imageName = req.body.name?.trim();
+
+         if (!imageName) {
+            return res.status(400).json({ error: "Image tag is required" });
+         }
+
          const file = new File([req.file.buffer], req.file.originalname, {
             type: req.file.mimetype,
          });
 
-         const response = await uploadImage(file, req.user.user_id);
+         const response = await uploadImage(file, req.user.user_id, imageName);
 
          if (response.error) {
             return res.status(500).json({ error: response.error.message });
          }
 
-         res.json({
-            success: true,
-            url: response.url,
-            name: response.name,
-         });
+         res.json(response);
       } catch (error) {
          next(error);
       }

@@ -30,15 +30,16 @@ function UploadImageModal({ onClose }) {
       };
    }, []);
 
-   const handleUpload = async (imgFile) => {
+   const handleUpload = async (imgFile, tagName) => {
       try {
          setUploading(true);
-         const result = await uploadImg(imgFile);
+         const result = await uploadImg(imgFile, tagName);
 
          if (!result) alert("image could not be uploaded");
 
          refreshImages(result);
       } catch (error) {
+         console.error("Error uploading image", error.message);
       } finally {
          setUploading(false);
          handleClose();

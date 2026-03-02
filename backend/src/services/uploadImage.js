@@ -2,7 +2,7 @@ const { UTApi } = require("uploadthing/server");
 const utapi = new UTApi({ apiKey: process.env.UPLOADTHING_SECRET });
 const { supabase } = require("../database/supabase");
 
-async function uploadImage(file, userId) {
+async function uploadImage(file, userId, imageName) {
    const image_uploaded = await utapi.uploadFiles(file);
 
    if (!image_uploaded) {
@@ -14,7 +14,7 @@ async function uploadImage(file, userId) {
       .insert({
          user_id: userId,
          file_key: image_uploaded.data.key,
-         name: image_uploaded.data.name,
+         name: imageName,
          url: image_uploaded.data.url,
       })
       .select()
