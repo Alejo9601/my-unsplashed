@@ -12,7 +12,7 @@ auth
          const result = await validateUser(user.username, user.password);
 
          if (!result.ok) {
-            res.status(401).json({
+            return res.status(401).json({
                success: false,
                message: "Invalid credentials",
             });
