@@ -49,10 +49,9 @@ export const MotionBar = styled.div`
 `;
 
 export const OPCont = styled(FlexColumnDiv)`
-   position: absolute;
-   top: 0;
-   left: 0;
-   z-index: 1;
+   position: fixed;
+   inset: 0;
+   z-index: 1000;
    height: 100vh;
    width: 100vw;
    background-color: rgb(0, 0, 0, 0.8);
