@@ -2,11 +2,12 @@ const { supabase } = require("../database/supabase");
 const { UTApi } = require("uploadthing/server");
 const utapi = new UTApi({ apikey: process.env.UPLOADTHING_SECRET });
 
-async function deleteImage(imageId) {
+async function deleteImage(imageId, userId) {
    const { data, error } = await supabase
       .from("images")
       .select("file_key")
       .eq("id", imageId)
+      .eq("user_id", userId)
       .single();
 
    if (error) {
@@ -18,7 +19,8 @@ async function deleteImage(imageId) {
    const { error: deleteError } = await supabase
       .from("images")
       .delete()
-      .eq("id", imageId);
+      .eq("id", imageId)
+      .eq("user_id", userId);
 
    if (deleteError) {
       throw deleteError;

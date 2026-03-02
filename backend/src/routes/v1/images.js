@@ -44,7 +44,7 @@ imagesRoutes
    .delete("/:id", async (req, res, next) => {
       const image_id = req.params.id;
       try {
-         await deleteImage(image_id);
+         await deleteImage(image_id, req.user.user_id);
          res.status(204).send();
       } catch (error) {
          next(error);
