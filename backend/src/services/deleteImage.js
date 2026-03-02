@@ -1,6 +1,6 @@
 const { supabase } = require("../database/supabase");
 const { UTApi } = require("uploadthing/server");
-const utapi = new UTApi({ apikey: process.env.UPLOADTHING_SECRET });
+const utapi = new UTApi({ apiKey: process.env.UPLOADTHING_SECRET });
 
 async function deleteImage(imageId, userId) {
    const { data, error } = await supabase
