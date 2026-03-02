@@ -1,4 +1,4 @@
-const express = require("express");
+﻿const express = require("express");
 const { validateUser } = require("../../services/validateUser");
 const authMiddleware = require("../../middlewares/auth");
 const { createUser } = require("../../services/createUser");
@@ -39,9 +39,9 @@ auth
          const result = await createUser(username, password);
 
          if (!result.success) {
-            throw new Error({
+            return res.status(400).json({
                success: false,
-               message: "User couldn´t be created",
+               message: result.error || "User couldn't be created",
             });
          }
 
@@ -51,8 +51,6 @@ auth
             sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
             maxAge: 3600000,
          });
-
-         console.log(res);
 
          res.send({ success: true, message: "Logged in", data: result });
       } catch (error) {
