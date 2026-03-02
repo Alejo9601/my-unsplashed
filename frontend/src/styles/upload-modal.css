@@ -61,6 +61,57 @@
    margin-top: 6px;
 }
 
+.upload-tag-form {
+   margin-bottom: 16px;
+}
+
+.upload-tag-field {
+   display: flex;
+   flex-direction: column;
+   gap: 8px;
+   padding: 14px;
+   border: 1px solid #e8ece9;
+   border-radius: 14px;
+   background: linear-gradient(180deg, #fafdfb 0%, #f4f8f5 100%);
+}
+
+.upload-tag-label {
+   color: #2f2f2f;
+   font-size: 13px;
+   font-weight: 700;
+   letter-spacing: 0.01em;
+}
+
+.upload-tag-input {
+   width: 100%;
+   height: 46px;
+   padding: 0 14px;
+   border: 1px solid #cfd8d2;
+   border-radius: 12px;
+   background-color: #ffffff;
+   color: #202020;
+   font-size: 14px;
+   outline: none;
+   transition: border-color 0.2s ease, box-shadow 0.2s ease,
+      transform 0.2s ease;
+   box-sizing: border-box;
+}
+
+.upload-tag-input::placeholder {
+   color: #8b948e;
+}
+
+.upload-tag-input:focus {
+   border-color: var(--color-green);
+   box-shadow: 0 0 0 4px rgba(61, 180, 109, 0.14);
+}
+
+.upload-tag-hint {
+   color: #6e7771;
+   font-size: 12px;
+   line-height: 1.4;
+}
+
 .upload-dropzone {
    position: relative;
    border: 1px dashed #cfcfcf;
@@ -131,6 +182,16 @@
    .upload-card {
       padding: 18px 14px;
       border-radius: 12px;
+   }
+
+   .upload-tag-field {
+      padding: 12px;
+      border-radius: 12px;
+   }
+
+   .upload-tag-input {
+      height: 42px;
+      font-size: 13px;
    }
 
    .upload-card-top h2 {
