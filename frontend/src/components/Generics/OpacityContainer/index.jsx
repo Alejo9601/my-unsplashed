@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { OPCont } from "../../../styles/styled/div";
 import preventAppScroll from "./../../../helpers/preventAppScroll";
 
-export function OpacityContainer({ children, onCloseAction }) {
+export function OpacityContainer({ children, onCloseAction, canClose = true }) {
    const [isClosing, setIsClosing] = useState(false);
 
    useEffect(() => {
@@ -14,6 +14,7 @@ export function OpacityContainer({ children, onCloseAction }) {
    }, []);
 
    const handleClose = () => {
+      if (!canClose || isClosing) return;
       setIsClosing(true);
       onCloseAction();
    };

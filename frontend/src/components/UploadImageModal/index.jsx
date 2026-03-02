@@ -13,7 +13,7 @@ function UploadImageModal({ onClose }) {
    const { uploadImg, refreshImages } = useImages();
 
    const handleClose = () => {
-      if (isClosing) return;
+      if (uploading || isClosing) return;
       setIsClosing(true);
       closeTimeoutRef.current = setTimeout(() => {
          onClose();
@@ -47,21 +47,23 @@ function UploadImageModal({ onClose }) {
    };
 
    return (
-      <OpacityContainer onCloseAction={handleClose}>
+      <OpacityContainer onCloseAction={handleClose} canClose={!uploading}>
          <div
             className={`upload-modal-shell ${
                isClosing ? "upload-modal-shell--closing" : ""
             }`}
             onClick={(event) => event.stopPropagation()}
          >
-            <button
-               type="button"
-               className="upload-modal-close"
-               onClick={handleClose}
-               aria-label="Close upload modal"
-            >
-               x
-            </button>
+            {!uploading ? (
+               <button
+                  type="button"
+                  className="upload-modal-close"
+                  onClick={handleClose}
+                  aria-label="Close upload modal"
+               >
+                  x
+               </button>
+            ) : null}
 
             {uploading ? (
                <div className="upload-modal-progress">
