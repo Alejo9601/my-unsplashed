@@ -3,6 +3,7 @@ import Home from "./pages/Home/index.jsx";
 import "./styles/app.css";
 import useUser from "./hooks/useUser.js";
 import Register from "./pages/Register/index.jsx";
+import Login from "./pages/Login/index.jsx";
 import Loader from "./components/Generics/Loader/index.jsx";
 
 function AppRoutes() {
@@ -28,7 +29,7 @@ function AppRoutes() {
          />
          <Route
             path="/login"
-            element={user ? <Navigate to="/home" replace /> : <Register />}
+            element={user ? <Navigate to="/home" replace /> : <Login />}
          />
          <Route
             path="/register"
